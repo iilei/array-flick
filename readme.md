@@ -13,16 +13,29 @@ $ npm install flick
 ## Usage
 
 ```js
-const flick = require('flick');
+const Flick = require('flick');
 
-flick('unicorns');
-//=> 'unicorns & rainbows'
+const flick = new Flick(1,2,3)
+
+flick.next(); // 1
+flick.next(); // 2
+flick.next(); // 3
+flick.next(); // 1
+flick.next(); // 2
+flick.prev(); // 1
+flick.prev(); // 3
+flick.prev(); // 2
+
 ```
-
 
 ## API
 
-### flick(input, [options])
+### new Flick(...values)
+
+Behaves like an Array with `next` and `prev` methods added.
+
+When writing database seeders and tests this expressiveness-sugar helps to make the
+intentions of the program easily recognizable.
 
 #### input
 
@@ -32,15 +45,10 @@ Lorem ipsum.
 
 #### options
 
-Type: `Object`
+Type: `Integer`
+Default: `1`
 
-##### foo
-
-Type: `boolean`<br>
-Default: `false`
-
-Lorem ipsum.
-
+How many steps to flick through. Defaults to `1`.
 
 ## License
 
