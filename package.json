@@ -1,0 +1,92 @@
+{
+ "name": "flick",
+ "version": "0.0.1",
+ "description": "Never ending flick though circular arrays using next() / prev()",
+ "license": "Unlicense",
+ "repository": {
+  "type": "git",
+  "url": "https://github.com/iilei/flick"
+ },
+ "author": {
+  "name": "iilei • Jochen Preusche",
+  "email": "iilei@users.noreply.github.com",
+  "url": "github.com/iilei"
+ },
+ "engines": {
+  "node": ">= 8.0.0",
+  "npm": ">= 5.0.0"
+ },
+ "files": [
+  "./src/index.js"
+ ],
+ "scripts": {
+  "tdd": "cross-env NODE_ENV=test jest --watch",
+  "test": "cross-env NODE_ENV=test jest --coverage",
+  "start": "npm run -s neat-env -- ./src/index.js",
+  "neat-env": "cross-env NODE_ENV=development node --require 'babel-register'",
+  "lint": "eslint ./src",
+  "lint:fix": "eslint --fix ./src",
+  "prebuild": "npm run clean",
+  "build": "cross-env NODE_ENV=production babel  src -d lib",
+  "clean": "rimraf coverage/ lib/",
+  "prerelease": "npm run lint && npm run test && npm run build",
+  "release": "git push --follow-tags origin master && npm publish && npm run setenv:dev"
+ },
+ "keywords": [
+  "array",
+  "immutable",
+  "step",
+  "pace",
+  "tick",
+  "rotate",
+  "circular"
+ ],
+ "devDependencies": {
+  "babel-cli": "^6.26.0",
+  "babel-core": "^6.26.3",
+  "babel-eslint": "^10.0.1",
+  "babel-jest": "^23.6.0",
+  "babel-plugin-module-resolver": "^3.1.1",
+  "babel-preset-airbnb": "^2.6.0",
+  "babel-preset-env": "^1.7.0",
+  "babel-preset-stage-2": "^6.24.1",
+  "babel-register": "^6.26.0",
+  "cross-env": "^5.2.0",
+  "eslint": "^5.6.1",
+  "eslint-config-airbnb": "^17.1.0",
+  "eslint-config-airbnb-base": "^13.1.0",
+  "eslint-import-resolver-babel-module": "^4.0.0",
+  "eslint-plugin-import": "^2.14.0",
+  "eslint-plugin-jsx-a11y": "^6.1.1",
+  "eslint-plugin-react": "^7.11.1",
+  "husky": "^1.1.0",
+  "jest": "^23.6.0",
+  "jest-extended": "^0.11.0",
+  "lint-staged": "^7.3.0"
+ },
+ "jest": {
+  "setupTestFrameworkScriptFile": "jest-extended",
+  "coverageDirectory": "<rootDir>/coverage",
+  "collectCoverage": true,
+  "collectCoverageFrom": [
+   "**/*.js",
+   "!coverage/**/*",
+    "!lib/**/*"
+  ],
+  "rootDir": "./",
+  "testEnvironment": "node",
+  "verbose": true
+ },
+ "husky": {
+  "hooks": {
+   "pre-commit": [
+    "lint-staged"
+   ]
+  }
+ },
+ "lint-staged": {
+  "*.js": [
+   "npm run lint:fix"
+  ]
+ }
+}
