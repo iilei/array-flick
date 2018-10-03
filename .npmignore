@@ -4,3 +4,8 @@
 .eslintignore
 .eslintrc.yaml
 .idea
+.gitattributes
+src
+package
+*.tgz
+**.spec.js

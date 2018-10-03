@@ -13,3 +13,6 @@ logs
 
 lib
 dist
+package
+
+*.tgz

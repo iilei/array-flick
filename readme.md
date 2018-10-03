@@ -1,4 +1,4 @@
-# flick [![Build Status](https://travis-ci.org/iilei/flick.svg?branch=master)](https://travis-ci.org/iilei/flick)
+# array-flick [![Build Status](https://travis-ci.org/iilei/flick.svg?branch=master)](https://travis-ci.org/iilei/flick)
 
 > Never ending flick though arrays by using next() / prev()
 
@@ -6,14 +6,14 @@
 ## Install
 
 ```
-$ npm install flick
+$ npm install array-flick
 ```
 
 
 ## Usage
 
 ```js
-const Flick = require('flick');
+const Flick = require('array-flick');
 
 const flick = new Flick(1,2,3)
 
@@ -37,18 +37,19 @@ Behaves like an Array with `next` and `prev` methods added.
 When writing database seeders and tests this expressiveness-sugar helps to make the
 intentions of the program easily recognizable.
 
-#### input
-
-Type: `string`
-
-Lorem ipsum.
-
-#### options
+#### next()
 
 Type: `Integer`
 Default: `1`
 
-How many steps to flick through. Defaults to `1`.
+How many steps to flick backwards. Defaults to `1`.
+
+#### prev()
+
+Type: `Integer`
+Default: `1`
+
+How many steps to flick backwards. Defaults to `1`.
 
 ## License
 
