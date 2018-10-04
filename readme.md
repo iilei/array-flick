@@ -48,7 +48,16 @@ intentions of the program easily recognizable.
 Type: `Integer`
 Default: `1`
 
-How many steps to flick backwards. Defaults to `1`.
+
+How many steps to flick forward. Defaults to `1`.
+
+```js
+const names = new Flick('Jim', 'Fin', 'Lin');
+
+names.next()  // Jim
+names.next(2) // Lin
+names.next(2) // Fin
+```
 
 #### prev()
 
@@ -57,12 +66,19 @@ Default: `1`
 
 How many steps to flick backwards. Defaults to `1`.
 
+```js
+const names = new Flick('Jim', 'Fin', 'Lin');
+
+names.prev()  // Lin
+names.prev(2) // Jim
+names.prev(2) // Fin
+```
 #### random()
 
 ```js
 const xos = new Flick(...(Array(99).fill('x').concat('o')));
 xos.randomFn = () => 0.999; // generate your own (seeded) random floats 0..1 here
-xos.random() // 'o' -- despite quite unlikely
+xos.random() // 'o'
 ```
 Returns a random entry
 
