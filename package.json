@@ -1,6 +1,6 @@
 {
  "name": "array-flick",
- "version": "0.1.0",
+ "version": "0.1.1",
  "description": "Never ending flick though circular arrays using next() / prev()",
  "license": "Unlicense",
  "repository": {
