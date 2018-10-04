@@ -1,12 +1,5 @@
 {
   "presets": [
-    "stage-2",
-    [
-      "env", {
-        "targets": {
-          "node": "current"
-        }
-      }
-    ]
+    "@babel/preset-env"
   ]
 }
