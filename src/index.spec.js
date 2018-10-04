@@ -101,12 +101,19 @@ describe('Flick', () => {
     });
 
     describe('with `randomFn` set', () => {
-      const manyOptions = Array(99).fill('x').concat('o');
+      const manyOptions = Array(48).fill('x').concat('-').concat('o')
+        .concat('+')
+        .concat(...Array(48).fill('x'));
 
       it('returns the expected element', () => {
         const options = new Flick(...manyOptions);
-        options.randomFn = () => 0.999;
+        const randomNumbers = [0.5, 1, 1, 0.49, 0.99];
+        options.randomFn = () => randomNumbers.pop();
+        expect(options.random()).toEqual('x');
+        expect(options.random()).toEqual('-');
         expect(options.random()).toEqual('o');
+        expect(options.random()).toEqual('+');
+        expect(options.random()).toEqual('x');
       });
     });
   });
