@@ -13,6 +13,8 @@ logs
 
 lib
 dist
-package
+
+package*
+!package.json
 
 *.tgz
