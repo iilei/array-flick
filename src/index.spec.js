@@ -44,6 +44,13 @@ describe('Flick', () => {
       expect(Array(...names)).toEqual(['Jim', 'Jil']);
     });
 
+    it('works with step size === 0', () => {
+      const names = new Flick('Jim', 'Jil');
+      expect(names.next(0)).toEqual('Jim');
+      expect(names.next(0)).toEqual('Jim');
+      expect(Array(...names)).toEqual(['Jim', 'Jil']);
+    });
+
     it('works with step sizes > array length', () => {
       const names = new Flick('Jim', 'Jil');
       expect(names.next(7)).toEqual('Jim');
@@ -77,6 +84,30 @@ describe('Flick', () => {
       expect(names.prev(7)).toEqual('Jim');
       expect(names.prev(7)).toEqual('Jil');
       expect(Array(...names)).toEqual(['Jim', 'Jil']);
+    });
+
+    it('works with step size === 0', () => {
+      const names = new Flick('Jim', 'Jil');
+      expect(names.prev(0)).toEqual('Jim');
+      expect(names.prev(0)).toEqual('Jim');
+      expect(Array(...names)).toEqual(['Jim', 'Jil']);
+    });
+  });
+
+  describe('#random', () => {
+    it('returns one of the given elements', () => {
+      const names = new Flick('Jim', 'Jil');
+      expect(names.random()).toBeOneOf(['Jim', 'Jil']);
+    });
+
+    describe('with `randomFn` set', () => {
+      const manyOptions = Array(99).fill('x').concat('o');
+
+      it('returns the expected element', () => {
+        const options = new Flick(...manyOptions);
+        options.randomFn = () => 0.999;
+        expect(options.random()).toEqual('o');
+      });
     });
   });
 });

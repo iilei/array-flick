@@ -26,7 +26,13 @@ flick.prev(); // 1
 flick.prev(); // 3
 flick.prev(); // 2
 
+flick.random() // one of 1,2,3
+
 ```
+
+Note there is also a setter for randomFn. again, useful for testing / seeding. Look at 
+[the specs](src/index.spec.js) to learn more.
+
 
 ## API
 
@@ -50,6 +56,19 @@ Type: `Integer`
 Default: `1`
 
 How many steps to flick backwards. Defaults to `1`.
+
+#### random()
+
+Returns a random entry
+
+##### randomFn (setter)
+
+Useful for reproducible random return values, for example with the help of
+[seedrandom](https://www.npmjs.com/package/seedrandom)
+
+
+
+## Contributing [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/dwyl/esta/issues)
 
 ## License
 

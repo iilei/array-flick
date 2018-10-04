@@ -21,6 +21,7 @@ class Flick extends Array {
     }
     )();
     this.flick = flick;
+    this.randomFunction = Math.random;
   }
 
   next(n = 1) {
@@ -29,6 +30,17 @@ class Flick extends Array {
 
   prev(n = 1) {
     return this.flick(this, -1 * n);
+  }
+
+  random() {
+    const random = Math.floor(this.randomFunction() * this.length);
+    return this.flick(this, random + 1);
+  }
+
+  set randomFn(fn) {
+    if (typeof fn === 'function') {
+      this.randomFunction = fn;
+    }
   }
 }
 
