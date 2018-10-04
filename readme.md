@@ -30,7 +30,7 @@ flick.random() // one of 1,2,3
 
 ```
 
-Note there is also a setter for randomFn. again, useful for testing / seeding. Look at 
+Note there is also a setter for randomFn. again, useful for testing / seeding. Look at
 [the specs](src/index.spec.js) to learn more.
 
 
@@ -59,13 +59,17 @@ How many steps to flick backwards. Defaults to `1`.
 
 #### random()
 
+```js
+const xos = new Flick(...(Array(99).fill('x').concat('o')));
+xos.randomFn = () => 0.999; // generate your own (seeded) random floats 0..1 here
+xos.random() // 'o' -- despite quite unlikely
+```
 Returns a random entry
 
 ##### randomFn (setter)
 
 Useful for reproducible random return values, for example with the help of
 [seedrandom](https://www.npmjs.com/package/seedrandom)
-
 
 
 ## Contributing [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/dwyl/esta/issues)
