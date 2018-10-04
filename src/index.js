@@ -1,6 +1,12 @@
 class Flick extends Array {
   constructor(...items) {
     super(...items);
+
+    // workaround for issues since babel 7
+    // see https://github.com/babel/babel/issues/4485#issuecomment-315569892
+    this.constructor = Flick;
+    Object.setPrototypeOf(this, Flick.prototype);
+
     const flick = (() => {
       let i;
       return ((a, n = 1) => {
